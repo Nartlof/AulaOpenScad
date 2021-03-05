@@ -1,0 +1,109 @@
+1- Introdução
+
+    -OpenScad é um software maduro para modelagem 3D
+    -A modelagem é feita por código, e não por cliques.
+    -Foco principal é a produção de desenhos de peças mecânicas.
+    -Alta precisão.
+
+    Vantagens:
+        Software de escolha para quem tem familiaridade com programação.
+        Comunidade grande e ativa.
+        Vasta quantidade de bibliotecas prontas.
+        Facilidade de reutilização de blocos prontos (bibliotecas).
+        Gera com facilida formas matemáticas.
+
+
+    Desvantagens:
+        Abordagem única no gênero. Os conhecimentos adquiridos não são migráveis.
+        Gera apenas o modelo 3D, sem a possibilidade de exportação de cortes bidimensionais.
+        Necessidade de se aprendar a linguagem do software.
+        Linguagem declarativa. Variáveis não podem ter seus valores alterados.
+        Difícil de ser ensinado para pessoas não iniciadas em programação.
+
+
+2- Formas geométricas
+
+    -O desenho é feito compondo-se formas geométricas simples (primitivas)
+      * 3D  cube()    cylinder()   sphere()   polyhedron()
+      * 2D  square()   circle()   polygon()
+    
+    -As formas são compostas por transformações e operações.
+      * translate()   rotate()   scale()   etc
+      * union()   difference()   intersection()
+
+    -Transformações apenas mudam a posição ou proporção da forma geométrica
+     no espaço.
+    -Operações agem sobre duas ou mais formas geométricas para criar uma nova.
+
+2.1 - Primitiva cube()
+    -A forma geométrica cube() cria um paralelepípedo.
+    -O parâmetro para criação da forma é um vetor com as dimensões desejadas.
+        cube([10,40,90]);
+    -Usando o parâmetro 'center', o paralelepípedo é desenhado com 
+     seu baricentro na origem.
+        cube([10,40,90],center=true);
+
+2.2 - Operador union()
+    -Une duas formas geométricas
+    -O operador union() é subentendida. Não é necessário declara-linguagem
+        union(){
+            cube([20,20,10]);
+            cube([10,10,20]);
+        }
+
+
+2.2 - translate()
+    -A transformação translate() translada uma figura geométrica nas direções X, Y e Z 
+    segundo o vetor passado como parâmetro:
+        union(){
+            cube([20,20,10]);
+            translate([5,5,0]) cube([10,10,20]);
+        }
+    -Para transladar um conjunto de formas geométricas, utiliza-se o 
+    operador union()
+        translate([10,10,10]) union(){
+            cube([20,20,10]);
+            cube([10,10,20]);
+        }
+    -Como o operador union() é subentendido, o seguinte código produz 
+    o mesmo resultado:
+        translate([10,10,10]){
+            cube([20,20,10]);
+            cube([10,10,20]);
+        }
+    -Pode-se concatenar translações:
+        translate([10,10,10]){
+            cube([20,20,10]);
+            translate([5,5,0]) cube([10,10,20]);
+        }
+
+
+Exercício 1:
+Criar uma caixa com dimensões esternas de 20x20x20mm e espessura de 2mm
+usando cube(), union() e translate()
+
+
+3- Parametrização
+    -Desenho paramétrico é aquele em que as dimensões das formas
+    geométricas são parâmetros definidos pelo usuário.
+
+    -Embora seja perfeitamente viável, e em algumas situações desejavel,
+    colocar dimensões fixas nas formas primitivas torna a forma geométrica
+    complicada de se alterar.
+
+3.1- Variáveis
+    -Variáveis em OpenScad podem conter qualquer coisa. Os tipos não precisam
+    ser especificados
+        nome = "Um nome de algo";
+        comprimento = 5.8;
+        lados = 3;
+    -OpenScad é uma linguagem declarativa. Não se pode alterar o valor de
+    variável.
+        a=3;
+        echo("primeiro valor de a=", a); // imprime 4
+        a=4;
+        echo("segundo valor de a=", a); // imprime 4
+
+Exercício 2:
+Criar uma caixa com dimensões parametrizadas 
+usando cube(), union() e translate()
