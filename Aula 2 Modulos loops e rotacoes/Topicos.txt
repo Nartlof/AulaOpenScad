@@ -6,7 +6,8 @@
             codigo aqui
         }
     -São usados como qualquer outro comando do OpenScad
-        exempo(parametro1=3, parametro2=5);
+        exemplo(parametro1=3, parametro2=5);
+        exemplo(3,5);
     
 Exercício 1:
 Transformar a caixa desenvolvida na última aula em um módulo que aceite
@@ -88,5 +89,6 @@ criado no Exercicio 1.
 
 Exercicio 3:
 Usando os comandos aprendidos até agora, crie uma forma geométrica
-composta de 6 caixas 20x20x20 dispostas ao redor de um circulo de
-de raio 30.
+composta de 6 caixas 20x20x20x2 dispostas ao redor de um circulo de
+de raio 30 de modo que uma diagonal esteja alinhada com o centro
+do círculo.

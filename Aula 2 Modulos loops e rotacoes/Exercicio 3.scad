@@ -19,11 +19,12 @@ module caixa(A=20,L=20,C=20,E=2) {
     }
 }
 
-N=6;
+N=10;
+Raio = 50;
 
 for (i = [1:N]){
     rotate(i* [0,0,360/N])
-        translate([30,0,0])
+        translate([Raio,0,0])
             rotate([0,0,-45])
                 caixa();
 }
