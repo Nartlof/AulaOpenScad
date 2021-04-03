@@ -1,0 +1,119 @@
+1- A forma geométrica sphere()
+    -Gera uma esfera com o centro na origem e o raio dado:
+        sphere(r=10);
+    
+    -Por conveniência, pode-se especificar o diâmetro:
+        sphere(d=20);
+    
+    -É só isso.
+
+2- A forma geométrica cylinder()
+    -É a forma geométrica de maior versatilidade
+    -Pode ser usada para gerar cilintros, prismas, cones e pirâmides
+    -Não gera um cilindro verdadeiro, mas um prisma com base poligonal.
+    -O prisma gerado é inscrito no cilindro idealizado.
+    -Em sua forma mais simples, especificando-se um raio (r) e uma altura (h),
+     gera um cilindro com o centro na origem
+        cylinder(r=10, h=20);
+    
+    -Por conveniência, pode-se especificar o diâmetro:
+        cylinder(d=20, h=20);
+
+    -Se for especificado o parâmetro center, a forma tem seu centro de 
+     gravidade posto na origem:
+        cylinder(r=10, h=20, center=true);
+
+    -É possível ter ráios diferentes em cada extremo do cilindro
+        cylinder(r1=15, r2=10, h=20);
+    
+    -Por conveniência, pode-se especificar o diâmetro
+        cylinder(d1=30, d2=20, h=20);
+
+    -Para produzir um cone, especifica-se um dos raios como zero
+        cylinder(r1=10, r2=0, h=20);
+
+3- Variáveis de ambiente $fa, $fs, $fn
+    -Afetam como superfícies curvas são geradas.
+    -Caso não sejam declaradas, assumem um valor padrão
+    -Uma vez definidas não podem ser alteradas
+    -Podem assumir valores distintos em contextos distintos
+        module Muda(){
+            $fa=10;
+            echo("$fa=", $fa);
+        }
+        $fa=5;
+        echo("$fa=", $fa);
+        Muda();
+        echo("$fa=", $fa);
+
+3.1- Variável $fa
+    -Define o menor ângulo que um lado de um polígono representa
+    -Se não definida, assume o valor padrão 12 graus
+        -significa que um circulo será um polígono com 30 lados
+    -Não pode ser menor que 0.01 (36000 lados)
+        $fa=6;
+        cylinder(r=20, h=20);
+    -Pode ser especificada como parâmetro para o contexto de uma forma
+        cylinder(r=19,h=20,$fa=6);
+        cylinder(r=20,h=10);
+
+3.2- Variável $fs
+    -Define o comprimento mínimo que o lado de um polígono
+    -Tem precedência sobre $fa. (se o raio for pequeno)
+    -O valor padrão é 2 e o mínimo é 0.01
+        $fs=.1;
+        cylinder(r=3, h=20);
+    -Pode ser especificada como parâmetro para o contexto de uma forma
+        cylinder(r=3, h=20, $fs=.1);
+        cylinder(r=4, h=10);
+
+3.3- Variável $fn
+    -Define o número máximo de lados de um polígono.
+    -Tem precedência sobre $fa e $fs
+    -O valor padrão é zero, para que seja ignorada.
+    -O valor mínimo é 3
+        cylinder(r1=10, r2=0, h=10, $fn=4);
+
+Exercício 1
+Crie um octoedro regular com lado 10.
+
+4- Furos
+    -Furos são feitos usando o operador difference(){}
+    -A primeira forma geométrica listada no operador é a ser vazada
+    -As formas seguintes são removidas da inicial
+        difference(){
+            cube([20,20,2], center=true);
+            cylinder(d=15, h=3, centre=true);
+        }
+    -Para visualizar partes removidas, usa-se o modificador #
+        difference(){
+            cube([20,20,2], center=true);
+            #cylinder(d=15, h=3, centre=true);
+        }
+    -É boa prática, sempre que possível, fazer as partes removidas
+     transpassarem a inicial.
+
+Exercício 2
+Crie uma placa retangular de 50mm por 70mm com 2mm de Espessura com furos 
+de 5mm de diâmetro em cada um dos cantos a 2mm das bordas;
+
+
+
+
+
+
+
+
+
+Exercício 3
+Arredonde os cantos da placa do exercício anterior mantendo o furo a 2mm 
+da borda.
+
+
+
+
+
+Exercício 4 (Desafio)
+Crie uma placa triangular com lado de 50mm, 2mm de espessura, furos 
+de 5mm em cada canto, 2mm de margem entre os furos e a borda da placa e
+com cantos arredondados.
