@@ -20,7 +20,7 @@
         cylinder(d=20, h=20);
 
     -Se for especificado o parâmetro center, a forma tem seu centro de 
-     gravidade posto na origem:
+     geométrico posto na origem:
         cylinder(r=10, h=20, center=true);
 
     -É possível ter ráios diferentes em cada extremo do cilindro
