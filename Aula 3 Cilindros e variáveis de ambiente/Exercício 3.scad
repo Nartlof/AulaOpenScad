@@ -7,10 +7,10 @@ da borda.
 C=70; //Comprimento
 L=50; //Largura
 E=2;  //Espessura
-D=5;  //Diametro do furo
-M=3;  //Margem
+D=5;  //Diâmetro do furo
+M=2;  //Margem
 
-RF=D/2+M; //Raio de aredondamento (fillet)
+RF=D/2+M; //Raio de arredondamento (fillet)
 
 difference(){
     union(){

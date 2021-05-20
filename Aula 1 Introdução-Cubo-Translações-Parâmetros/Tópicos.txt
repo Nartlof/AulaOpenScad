@@ -79,7 +79,7 @@
 
 
 Exercício 1:
-Criar uma caixa com dimensões esternas de 20x20x20mm e espessura de 2mm
+Criar uma caixa com dimensões externas de 20x20x20mm e espessura de 2mm
 usando cube(), union() e translate()
 
 

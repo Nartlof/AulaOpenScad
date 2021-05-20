@@ -75,7 +75,7 @@
         cylinder(r1=10, r2=0, h=10, $fn=4);
 
 Exercício 1
-Crie um octoedro regular com lado 10.
+Crie um octaedro regular com diagonal 20.
 
 4- Furos
     -Furos são feitos usando o operador difference(){}

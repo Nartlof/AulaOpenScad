@@ -38,7 +38,7 @@ crie a caixa.
             translate(i * [20,0,0])
                 cube([10,10,10]);
         }
-    -O comando for(){} pode ser contatenado:
+    -O comando for(){} pode ser concatenado:
         for (i = [0, 20]){
             for (j = [0, 20]){
                 translate([i, j, 0])
